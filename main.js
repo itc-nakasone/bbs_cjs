@@ -7,6 +7,7 @@ const expressSession = require("express-session");
 const passport = require("passport");
 const mongoose = require("mongoose");
 const {User} = require("./models/User");
+const {Router} = require("./routes/index");
 
 const app = express();
 
@@ -34,6 +35,8 @@ app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     next();
 });
+
+app.use(Router);
 
 mongoose.connect("mongodb://localhost:27017/bbs").then(() => {
     console.info("Successfully connected to MongoDB using Mongoose");

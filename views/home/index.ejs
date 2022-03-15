@@ -1,0 +1,7 @@
+<h1>トップページ: カテゴリ一覧</h1>
+
+<ul>
+    <% categoryList.forEach( cat => { %>
+        <li><a href="<%= `/category/${cat._id}` %>"><%= cat.name %></a></li>
+    <% }) %>
+</ul>
