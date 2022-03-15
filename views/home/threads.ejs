@@ -3,7 +3,7 @@
     <h2>スレッド一覧</h2>
     <a href="<%= `/threads/new/${category._id}` %>">新規スレ作成</a>
 </header>
-<% if (threadList && threadList.lengfth !== 0) { %>
+<% if (threadList && threadList.length !== 0) { %>
     <ul>
         <% threadList.forEach( thread => { %>
             <li><a href="<%= `/threads/${thread._id}/latest` %>"><%= thread.title %></a></li>
