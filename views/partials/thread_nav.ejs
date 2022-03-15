@@ -1,0 +1,19 @@
+<h1 class="thread-title"><%= thread.title %></h1>
+<nav>
+    <a href="<%= `/threads/${thread._id}/latest` %>" class="latest">最新50件</a>
+    /
+    <a href="<%= `/threads/${thread._id}/all` %>" class="all">全件表示</a>
+    /
+    <a href="<%= `/messages/new/${thread._id}` %>" class="new-post">レスを投稿</a>
+    <% if (loggedIn) { %>
+        /
+        <a href="<%= `/users/logout` %>">ログアウト</a>
+    <% } else { %>
+        /
+        <a href="<%= `/users/login` %>">ログイン</a>
+    <% } %>
+    <% if (currentUser && currentUser.equals(tread.owner)) { %>
+        /
+        <a href="javascript:void(0)" id="thread-delete" data-tid="<%= thread._id %>">スレ削除</a>
+    <% } %>
+</nav>

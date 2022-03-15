@@ -31,7 +31,7 @@ const schema = new Schema({
 });
 
 schema.virtual("postedAt").get(function () {
-    return dayjs(this.createdAt).locals("ja").format("YYYY/MM/DD(ddd) HH:mm:ss.SSS");
+    return dayjs(this.createdAt).locale("ja").format("YYYY/MM/DD(ddd) HH:mm:ss.SSS");
 });
 
 schema.pre("save", function (next) {

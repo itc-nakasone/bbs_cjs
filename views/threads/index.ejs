@@ -1,0 +1,20 @@
+<%- include("../partials/thread_nav"); %>
+
+<% messageList.forEach(message => { %>
+    <div class="br">
+        <div class="message-box">
+            <div class="meta">
+                <span class="number"><%= message.serial %></span>
+                <span class="name"><%= message.deleted ? "削除されました" : message.user.name %></span>
+                <span class="date"><%= message.postedAt %></span>
+                <% if (!message.deleted && currentUser && currentUser.equals(message.user)) { %>
+                    <span class="delete">
+                        <a href="javascript:void(0)" class="message-delete"
+                           data-mid="<%= message._id %>" data-tid="<%= thread._id %>">削除</a>
+                    </span>
+                <% } %>
+            </div>
+            <div class="content"><%= message.deleted ? "あぼーん" : message.content %></div>
+        </div>
+    </div>
+<% }); %>
