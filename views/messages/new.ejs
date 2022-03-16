@@ -4,5 +4,6 @@
     <h1>レスを投稿する</h1>
     <form action="<%= `/messages/new/${thread._id}` %>" method="post">
         <%- include("../partials/message_input") %>
+        <button type="submit" class="submit-button">書き込む</button>
     </form>
 </div>

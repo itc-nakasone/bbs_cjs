@@ -5,7 +5,7 @@
         <div class="message-box">
             <div class="meta">
                 <span class="number"><%= message.serial %></span>
-                <span class="name"><%= message.deleted ? "削除されました" : message.user.name %></span>
+                <span class="name"><%= message.deleted ? "削除されました" : message.user.view_name %></span>
                 <span class="date"><%= message.postedAt %></span>
                 <% if (!message.deleted && currentUser && currentUser.equals(message.user)) { %>
                     <span class="delete">

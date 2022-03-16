@@ -36,11 +36,10 @@ schema.virtual("postedAt").get(function () {
 
 schema.pre("save", function (next) {
     const Message = model("Message");
-    const preMessage = this;
     Message.count({
         thread: this.thread,
     }).then(value => {
-        preMessage.serialNumber = value + 1;
+        this.serial = value + 1;
         next();
     }).catch(e => {
         next(e);
