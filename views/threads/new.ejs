@@ -1,0 +1,9 @@
+<div class="form">
+    <form action="<%= `/threads/new/${category._id}` %>" method="post">
+        <div class="form-item">
+            <label for="title">タイトル</label>
+            <input type="text" name="title" id="title" required>
+        </div>
+        <%- include("../partials/message_input") %>
+    </form>
+</div>

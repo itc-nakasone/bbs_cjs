@@ -4,6 +4,7 @@ const express = require("express");
 const layouts = require("express-ejs-layouts");
 const cookieParser = require("cookie-parser");
 const expressSession = require("express-session");
+const flash = require("connect-flash")
 const passport = require("passport");
 const mongoose = require("mongoose");
 const {User} = require("./models/User");
@@ -24,6 +25,7 @@ app.use(expressSession({
     resave: false,
     saveUninitialized: false
 }));
+app.use(flash());
 app.use(passport.initialize({}));
 app.use(passport.session({}));
 passport.use(User.createStrategy());
