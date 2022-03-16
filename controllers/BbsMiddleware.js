@@ -87,7 +87,18 @@ const middleware = {
             res.locals.messageList = [];
             next();
         });
-    }
+    },
+
+    requireLogin: (req, res, next) => {
+        if (!res.locals.loggedIn) {
+            if (req.session.refUrl == null) {
+                req.session.refUrl = req.originalUrl;
+            }
+            res.redirect("/users/login");
+            return;
+        }
+        next();
+    },
 }
 
 module.exports = {

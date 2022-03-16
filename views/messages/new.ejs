@@ -1,0 +1,10 @@
+<%- include("../partials/thread_nav") %>
+
+<div class="form">
+    <h1>レスを投稿する</h1>
+    <form action="<%= `/messages/new/${thread._id}` %>" method="post">
+        <label for="message">コメント</label>
+        <textarea name="message" id="message" cols="70" rows="5" wrap="soft" placeholder="コメント内容"></textarea>
+        <button type="submit" class="submit-button">書き込む</button>
+    </form>
+</div>

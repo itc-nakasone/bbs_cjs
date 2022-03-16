@@ -44,9 +44,9 @@ const controller = {
         });
         User.register(tempUser, req.body.password, (e, user) => {
             if (user != null) {
-                if (res.locals.preUrl != null) {
-                    res.locals.redirect = res.locals.preUrl;
-                    delete res.locals.preUrl;
+                if (req.session.refUrl != null) {
+                    res.locals.redirect = req.session.refUrl;
+                    delete req.session.refUrl;
                 } else {
                     res.locals.redirect = "/";
                 }
