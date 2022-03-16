@@ -15,7 +15,7 @@ const controller = {
             thread: res.locals.thread,
             user: res.locals.currentUser
         }).then(() => {
-            res.locals.redirect = `/threads/${res.locals.thread._id}/latest`;
+            res.locals.redirect = `/threads/read/${res.locals.thread._id}/latest`;
             next();
         }).catch(e => {
             console.error("New Message failed to create.", e);

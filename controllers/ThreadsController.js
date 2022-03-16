@@ -20,7 +20,7 @@ const controller = {
             category: res.locals.category,
             owner: res.locals.currentUser,
         }).then(thread => {
-            res.locals.redirect = `/threads/${thread._id}/latest`;
+            res.locals.redirect = `/threads/read/${thread._id}/latest`;
             res.locals.thread = thread;
             return Message.create({
                 content: req.body.message,
@@ -32,6 +32,20 @@ const controller = {
         }).catch(error => {
             console.error(`Error saving thread: ${error.message}`);
             res.locals.thread.remove().then();
+            next(error);
+        });
+    },
+
+    delete: (req, res, next) => {
+        Message.deleteMany({
+            thread: res.locals.thread,
+        }).exec().then(() => {
+            return Thread.findByIdAndDelete(res.locals.thread).exec();
+        }).then(() => {
+            res.locals.redirect = "/";
+            next();
+        }).catch(error => {
+            console.log(error.message, error);
             next(error);
         });
     }

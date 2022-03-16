@@ -6,7 +6,7 @@
 <% if (threadList && threadList.length !== 0) { %>
     <ul>
         <% threadList.forEach( thread => { %>
-            <li><a href="<%= `/threads/${thread._id}/latest` %>"><%= thread.title %></a></li>
+            <li><a href="<%= `/threads/read/${thread._id}/latest` %>"><%= thread.title %></a></li>
         <% }); %>
     </ul>
 <% } else { %>
