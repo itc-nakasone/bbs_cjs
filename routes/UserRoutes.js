@@ -10,6 +10,8 @@ router.get("/login", UsersController.login);
 router.post("/login", UsersController.authenticate);
 router.get("/success", UsersController.success, BbsMiddleware.redirect);
 router.get("/logout", UsersController.logout, BbsMiddleware.redirect);
+router.get("/new", UsersController.new);
+router.post("/new", UsersController.create, BbsMiddleware.redirect);
 
 module.exports = {
     UserRoutes: router,
