@@ -55,6 +55,7 @@ const middleware = {
     loadThread: (req, res, next) => {
         Thread.findById(req.params.tid).exec().then(thr => {
             if (thr == null) {
+                console.error(`thread id: ${req.params.tid}`);
                 next(new Error("Thread Id is invalid!!"));
                 return;
             }

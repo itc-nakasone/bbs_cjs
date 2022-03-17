@@ -22,6 +22,20 @@ const controller = {
             next(e);
         });
     },
+
+    delete: (req, res, next) => {
+        Message.findByIdAndUpdate(req.params.mid, {
+            $set: {
+                deleted: true
+            }
+        }).then(() => {
+            res.locals.redirect = `/threads/read/${req.params.tid}`
+            next();
+        }).catch(e => {
+            console.error(e);
+            next(e);
+        })
+    },
 };
 
 module.exports = {

@@ -5,6 +5,8 @@ const {Message} = require("../models/Message");
 
 const controller = {
     index: (req, res) => {
+        // ログイン後のリダイレクト先がおかしくなるのでリセット
+        delete req.session.refUrl;
         res.render("threads/index");
     },
 
@@ -29,10 +31,10 @@ const controller = {
             });
         }).then(() => {
             next();
-        }).catch(error => {
-            console.error(`Error saving thread: ${error.message}`);
+        }).catch(e => {
+            console.error(`Error saving thread: ${e.message}`);
             res.locals.thread.remove().then();
-            next(error);
+            next(e);
         });
     },
 
@@ -44,9 +46,9 @@ const controller = {
         }).then(() => {
             res.locals.redirect = "/";
             next();
-        }).catch(error => {
-            console.log(error.message, error);
-            next(error);
+        }).catch(e => {
+            console.log(e.message, e);
+            next(e);
         });
     }
 };
